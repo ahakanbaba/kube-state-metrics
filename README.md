@@ -36,9 +36,9 @@ additional metrics!
 | kube_node_status_capacity_cpu_cores | Gauge | `node`=&lt;node-address&gt;|
 | kube_node_status_capacity_memory_bytes | Gauge | `node`=&lt;node-address&gt;|
 | kube_node_status_capacity_pods | Gauge | `node`=&lt;node-address&gt;|
-| kube_node_status_allocateable_cpu_cores | Gauge | `node`=&lt;node-address&gt;|
-| kube_node_status_allocateable_memory_bytes | Gauge | `node`=&lt;node-address&gt;|
-| kube_node_status_allocateable_pods | Gauge | `node`=&lt;node-address&gt;|
+| kube_node_status_allocatable_cpu_cores | Gauge | `node`=&lt;node-address&gt;|
+| kube_node_status_allocatable_memory_bytes | Gauge | `node`=&lt;node-address&gt;|
+| kube_node_status_allocatable_pods | Gauge | `node`=&lt;node-address&gt;|
 
 ### Deployment Metrics
 
@@ -67,7 +67,7 @@ additional metrics!
 | kube_pod_container_status_terminated | Gauge | `container`=&lt;container-name&gt; <br> `pod`=&lt;pod-name&gt; <br> `namespace`=&lt;pod-namespace&gt; |
 | kube_pod_container_status_ready | Gauge | `container`=&lt;container-name&gt; <br> `pod`=&lt;pod-name&gt; <br> `namespace`=&lt;pod-namespace&gt; |
 | kube_pod_container_status_restarts | Counter | `container`=&lt;container-name&gt; <br> `namespace`=&lt;pod-namespace&gt; <br> `pod`=&lt;pod-name&gt; |
-| kube_pod_container_requested_cpu_millicores | Gauge | `container`=&lt;container-name&gt; <br> `pod`=&lt;pod-name&gt; <br> `namespace`=&lt;pod-namespace&gt; <br> `node`=&lt; node-address&gt; |
+| kube_pod_container_requested_cpu_cores | Gauge | `container`=&lt;container-name&gt; <br> `pod`=&lt;pod-name&gt; <br> `namespace`=&lt;pod-namespace&gt; <br> `node`=&lt; node-address&gt; |
 | kube_pod_container_requested_memory_bytes | Gauge | `container`=&lt;container-name&gt; <br> `pod`=&lt;pod-name&gt; <br> `namespace`=&lt;pod-namespace&gt; <br> `node`=&lt; node-address&gt; |
 
 ## kube-state-metrics vs. Heapster

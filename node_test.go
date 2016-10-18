@@ -19,8 +19,8 @@ package main
 import (
 	"testing"
 
-	"k8s.io/client-go/1.4/pkg/api/resource"
-	"k8s.io/client-go/1.4/pkg/api/v1"
+	"k8s.io/client-go/1.5/pkg/api/resource"
+	"k8s.io/client-go/1.5/pkg/api/v1"
 )
 
 type mockNodeStore struct {
@@ -49,12 +49,12 @@ func TestNodeCollector(t *testing.T) {
 		# HELP kube_node_status_capacity_cpu_cores The total CPU resources of the node.
 		# TYPE kube_node_status_capacity_memory_bytes gauge
 		# HELP kube_node_status_capacity_memory_bytes The total memory resources of the node.
-		# TYPE kube_node_status_allocateable_pods gauge
-		# HELP kube_node_status_allocateable_pods The pod resources of a node that are available for scheduling.
-		# TYPE kube_node_status_allocateable_cpu_cores gauge
-		# HELP kube_node_status_allocateable_cpu_cores The CPU resources of a node that are available for scheduling.
-		# TYPE kube_node_status_allocateable_memory_bytes gauge
-		# HELP kube_node_status_allocateable_memory_bytes The memory resources of a node that are available for scheduling.
+		# TYPE kube_node_status_allocatable_pods gauge
+		# HELP kube_node_status_allocatable_pods The pod resources of a node that are available for scheduling.
+		# TYPE kube_node_status_allocatable_cpu_cores gauge
+		# HELP kube_node_status_allocatable_cpu_cores The CPU resources of a node that are available for scheduling.
+		# TYPE kube_node_status_allocatable_memory_bytes gauge
+		# HELP kube_node_status_allocatable_memory_bytes The memory resources of a node that are available for scheduling.
 	`
 	cases := []struct {
 		nodes   []v1.Node
@@ -103,7 +103,7 @@ func TestNodeCollector(t *testing.T) {
 							ContainerRuntimeVersion: "rkt",
 						},
 						Capacity: v1.ResourceList{
-							v1.ResourceCPU:    resource.MustParse("4"),
+							v1.ResourceCPU:    resource.MustParse("4.3"),
 							v1.ResourceMemory: resource.MustParse("2G"),
 							v1.ResourcePods:   resource.MustParse("1000"),
 						},
@@ -118,12 +118,12 @@ func TestNodeCollector(t *testing.T) {
 			want: metadata + `
 				kube_node_info{container_runtime_version="rkt",kernel_version="kernel",kubelet_version="kubelet",kubeproxy_version="kubeproxy",node="127.0.0.1",os_image="osimage"} 1
 				kube_node_spec_unschedulable{node="127.0.0.1"} 1
-				kube_node_status_capacity_cpu_cores{node="127.0.0.1"} 4
+				kube_node_status_capacity_cpu_cores{node="127.0.0.1"} 4.3
 				kube_node_status_capacity_memory_bytes{node="127.0.0.1"} 2e9
 				kube_node_status_capacity_pods{node="127.0.0.1"} 1000
-				kube_node_status_allocateable_cpu_cores{node="127.0.0.1"} 3
-				kube_node_status_allocateable_memory_bytes{node="127.0.0.1"} 1e9
-				kube_node_status_allocateable_pods{node="127.0.0.1"} 555
+				kube_node_status_allocatable_cpu_cores{node="127.0.0.1"} 3
+				kube_node_status_allocatable_memory_bytes{node="127.0.0.1"} 1e9
+				kube_node_status_allocatable_pods{node="127.0.0.1"} 555
 			`,
 		},
 		// Verify condition enumerations.
