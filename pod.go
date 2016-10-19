@@ -77,6 +77,7 @@ var (
 	descPodContainerRequestedCpuCores = prometheus.NewDesc(
 		"kube_pod_container_requested_cpu_cores",
 		"The number of requested cpu cores by a container.",
+		[]string{"namespace", "pod", "container", "node"}, nil,
 	)
 
 	descPodContainerRequestedMemoryBytes = prometheus.NewDesc(

@@ -19,13 +19,8 @@ package main
 import (
 	"testing"
 
-<<<<<<< HEAD
-	"k8s.io/client-go/1.4/pkg/api/resource"
-	"k8s.io/client-go/1.4/pkg/api/v1"
-=======
 	"k8s.io/client-go/1.5/pkg/api/resource"
 	"k8s.io/client-go/1.5/pkg/api/v1"
->>>>>>> origin/master
 )
 
 type mockPodStore struct {
@@ -60,13 +55,8 @@ func TestPodCollector(t *testing.T) {
 		# TYPE kube_pod_status_ready gauge
 		# HELP kube_pod_status_scheduled Describes the status of the scheduling process for the pod.
 		# TYPE kube_pod_status_scheduled gauge
-<<<<<<< HEAD
-		# HELP kube_pod_container_requested_cpu_millicores The number of requested cpu millicores by a container.
-		# TYPE kube_pod_container_requested_cpu_millicores gauge
-=======
 		# HELP kube_pod_container_requested_cpu_cores The number of requested cpu cores by a container.
 		# TYPE kube_pod_container_requested_cpu_cores gauge
->>>>>>> origin/master
 		# HELP kube_pod_container_requested_memory_bytes The number of requested memory bytes  by a container.
 		# TYPE kube_pod_container_requested_memory_bytes gauge
 	`
